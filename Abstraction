@@ -1,0 +1,111 @@
+
+interface Car {
+
+    String getCarname();
+
+    void startCar();
+
+    void breakCar();
+
+    void changeGear(int gearPosition);
+
+}
+
+abstract class NormalCar implements Car {
+
+    String carName;
+}
+
+abstract class SportCar implements Car {
+
+    String carName;
+
+    abstract void getNitrous();
+
+    abstract void getTurboPower();
+
+}
+
+// create type of sport car
+class Nissan extends SportCar {
+
+    public Nissan(String carName) {
+        this.carName = carName;
+    }
+
+    @Override
+    void getNitrous() {
+        System.out.println("Nitrous is working on " + getCarname());
+    }
+
+    @Override
+    void getTurboPower() {
+        System.out.println("Turbo is working in " + getCarname());
+    }
+
+    @Override
+    public String getCarname() {
+        return "Nissan "+this.carName;
+    }
+
+    @Override
+    public void startCar() {
+        System.out.println(getCarname() + " is starting");
+    }
+
+    @Override
+    public void breakCar() {
+        System.out.println(getCarname() + " is breaking");
+    }
+
+    @Override
+    public void changeGear(int gearPosition) {
+        System.out.println(getCarname() + " is being changed gear on " + gearPosition);
+    }
+
+}
+
+// create type of normal car
+class Toyota extends NormalCar {
+
+    public Toyota(String carName) {
+        this.carName = carName;
+    }
+
+    @Override
+    public String getCarname() {
+        return "Toyota "+this.carName;
+    }
+
+    @Override
+    public void startCar() {
+        System.out.println(getCarname() + " is starting");
+
+    }
+
+    @Override
+    public void breakCar() {
+        System.out.println(getCarname() + " is breaking");
+    }
+
+    @Override
+    public void changeGear(int gearPosition) {
+        System.out.println(getCarname() + " is being changed gear on " + gearPosition);
+    }
+}
+
+class CarUser {
+
+    public static void main(String[] args) {
+//hiding implementation showing funtionalities
+        Nissan nissan = new Nissan("GTR");
+        nissan.getCarname();
+        nissan.startCar();
+        nissan.changeGear(4);
+        nissan.getNitrous();
+        nissan.getTurboPower();
+        nissan.breakCar();
+
+    }
+
+}
