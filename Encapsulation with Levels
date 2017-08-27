@@ -1,0 +1,87 @@
+class FirstLevelEncapsulation{
+    private int empId;
+    private String empName;
+
+    public int getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(int empId) {
+        this.empId = empId;
+        //setting conditions can be added if necessary
+    }
+
+    public void setEmpName(String empName) {
+        this.empName = empName;
+    }
+
+    public String getEmpName() {
+        return empName;
+    }
+
+}
+
+class SecondLevelEncapsulation{
+    
+    class InnerClass{
+        int empId;
+        String empName;
+
+        public InnerClass(int empId, String empName) {
+            this.empId = empId;
+            this.empName = empName;
+        }
+
+        
+    
+    }
+
+}
+
+class ThirdLevelEncapsulation{
+    
+    
+    private class Employee{
+       
+    }
+    void accessClass(int id,String empName){
+        
+        new Employee(){
+            int empId;
+            String empName;
+            
+            private void setValues(int id,String name){
+            this.empId=id;
+            this.empName=name;
+            }
+ 
+        }.setValues(id, empName);
+        
+    
+    }
+
+    
+}
+class Application{
+
+    public static void main(String[] args) {
+        //first level accessing
+        
+        FirstLevelEncapsulation encapsulation=new FirstLevelEncapsulation();
+        encapsulation.setEmpId(0);
+        encapsulation.setEmpName("Gihan");
+        
+        // second Level accessing
+        
+        SecondLevelEncapsulation encapsulation2=new SecondLevelEncapsulation();
+        SecondLevelEncapsulation.InnerClass accessClass=encapsulation2.new InnerClass(1,"Gihan");
+        
+        // third Level accessing
+        
+        ThirdLevelEncapsulation encapsulation3=new ThirdLevelEncapsulation();
+        encapsulation3.accessClass(1,"Gihan");
+        
+        
+    }
+
+}
