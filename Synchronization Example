@@ -1,0 +1,55 @@
+
+class Test {
+
+    synchronized void threadSafeMethod(String threadName) {
+        System.out.println("This method is accessed by :" + threadName);
+
+    }
+
+}
+
+class ThreadOne extends Thread {
+
+    Test test;
+
+    //Constructor dependency Injection 
+    public ThreadOne(Test test) {
+        this.test = test;
+    }
+
+    @Override
+    public void run() {
+        test.threadSafeMethod(Thread.currentThread().getName());
+
+    }
+
+}
+
+class ThreadTwo extends Thread{
+  Test test;
+
+    //Constructor dependency Injection 
+    public ThreadTwo(Test test) {
+        this.test = test;
+    }
+
+    @Override
+    public void run() {
+        test.threadSafeMethod(Thread.currentThread().getName());
+
+    }
+}
+
+class Application{
+    public static void main(String[] args) {
+        ThreadOne threadOne=new ThreadOne(new Test());
+        threadOne.setName("Thread One");
+        ThreadTwo threadTwo=new ThreadTwo(new Test());
+        threadTwo.setName("Thread Two");
+        threadOne.start();
+        threadTwo.start();
+        
+        
+    }
+
+}
