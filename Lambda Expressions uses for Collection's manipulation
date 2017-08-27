@@ -1,0 +1,41 @@
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
+
+class student{
+    String name;
+    Double mark;
+
+    public student(String name, Double mark) {
+        this.mark=mark;
+        this.name=name;
+        
+    }
+
+    
+}
+
+class Application
+{
+   public static void main (String args []) {
+        
+       List<student> list=new ArrayList<>();
+      list.add(new student("Gihan",12.45));
+      list.add(new student("samn",20.5));
+      list.add(new student("ajith",18.4));
+      list.add(new student("sujth",22.4));
+      list.add(new student("nayana",28.6));
+       
+      // Using Comparator 
+       Collections.sort(list,(p1,p2)->{return p1.mark.compareTo(p2.mark);});
+      
+      // Filtering data 
+       Stream<student> filteredData=list.stream().filter(p->p.mark>20);
+      filteredData.forEach((n)->System.out.println(n.name+" - " +n.mark)); 
+       
+       
+       
+   }
+}
