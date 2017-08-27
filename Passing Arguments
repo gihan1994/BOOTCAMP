@@ -1,0 +1,41 @@
+
+
+class SuperParent{
+
+    public SuperParent(String value) {
+        System.out.println(value+" is printed in SuperParent");
+    }
+    
+
+
+}
+
+class Parent extends SuperParent{
+
+    public Parent(String value) {
+        super(value);
+    }
+
+    
+
+
+}
+class Child extends Parent{
+
+    public Child(String value) {
+        super(value);
+    }
+
+    
+
+}
+
+class Application{
+
+    public static void main(String[] args) {
+        
+        Child child=new Child("Gihan");
+        
+    }
+
+}
