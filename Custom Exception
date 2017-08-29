@@ -1,0 +1,54 @@
+class NameInvalidException extends Exception {
+
+    NameInvalidException() {
+        super("You have entered invalid User name !!!");
+
+    }
+
+}
+
+class PasswordInvalidException extends Exception {
+
+    public PasswordInvalidException() {
+        super("You have entered invalid password !!");
+    }
+
+}
+
+final class AccessCheck {
+
+    final boolean accessChecker(String username, String password) throws NameInvalidException, PasswordInvalidException {
+        if (username.equalsIgnoreCase("root")
+                && password.equalsIgnoreCase("password")) {
+            return true;
+        } else {
+            if (!username.equalsIgnoreCase("root")) {
+
+                throw new NameInvalidException();
+            }
+            if (!password.equalsIgnoreCase("password")) {
+                throw new PasswordInvalidException();
+            }
+
+        }
+        return false;
+    }
+
+}
+
+class Application {
+
+    public static void main(String[] args) {
+        try {
+            String userName = "root";
+            String password = "passwordb";
+            AccessCheck accessCheck = new AccessCheck();
+
+            System.out.println(accessCheck.accessChecker(userName, password));;
+        } catch (NameInvalidException | PasswordInvalidException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+}
